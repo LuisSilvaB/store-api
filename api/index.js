@@ -8,24 +8,25 @@ const routerApi = require('./routes')
 const { logErrors, errorHandler, errorHandlerBoom } = require('./middleware/error.handler')
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
 // * Solucion al cors 1
 
-const whiteList = ['http://localhost:8080', 'https://myapps.com', 'http://127.0.0.1:5500'],
- options = {
-  origin: (origin, callback) => {
-    if (whiteList.includes(origin) || !origin) {
-      // * Le indicamos si con el 'true' que el acceso esta permitido y con el 'null' el mensaje
-      callback(null, true)
-    } else {
-      callback(new Error('Acceso no permitido'))
-    }
-  }
-}
-app.use(cors(options));
+// const whiteList = ['http://localhost:8080', 'https://myapps.com', 'http://127.0.0.1:5500'],
+//  options = {
+//   origin: (origin, callback) => {
+//     if (whiteList.includes(origin) || !origin) {
+//       // * Le indicamos si con el 'true' que el acceso esta permitido y con el 'null' el mensaje
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Acceso no permitido'))
+//     }
+//   }
+// }
+// app.use(cors(options));
+app.use(cors());
 
 routerApi(app);
 
