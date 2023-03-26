@@ -12,6 +12,8 @@ const port = process.env.PORT || 3001;
 
 app.use(express.json());
 
+// * Solucion al cors 1 
+
 const whiteList = ['http://localhost:8080', 'https://myapps.com', 'http://127.0.0.1:5500'],
  options = {
   origin: (origin, callback) => {
