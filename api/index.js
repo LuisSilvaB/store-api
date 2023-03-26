@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors') // * Sirve para dar permiso a los clientes
 // * Esportamos la funcion al colocarlo de esta forma por defecto buscará el index.js
 const routerApi = require('./routes')
 
@@ -40,9 +40,9 @@ app.use(errorHandler);
 //  * pero en para el envio en la mayoria de cosos se hace uso de json
 // */
 
-// app.get('/', (req, res)=>{
-//   res.send('Hola desde mi server en express')
-// })
+app.get('/api', (req, res)=>{
+  res.send('Hola desde mi server en express')
+})
 
 
 // app.get('/categorias/:categoriaId/products/:productsId', (req,res) => {
