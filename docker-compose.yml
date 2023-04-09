@@ -1,0 +1,24 @@
+version: '3.3'
+# Instalando servicio postgres en un contenedor
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=my_store
+      - POSTGRES_USER=nico
+      - POSTGRES_PASSWORD=admin123
+    ports:
+      - 5431:5431
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+#Instaladn pservicio de pgadmin
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@mail.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    #Internamente
+    # * se ejecute en el puerto 5050 y se conecte con el puerto 80
+    ports:
+      - 5050:80

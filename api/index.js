@@ -8,24 +8,13 @@ const routerApi = require('./routes')
 const { logErrors, errorHandler, errorHandlerBoom } = require('./middleware/error.handler')
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 app.use(express.json());
 
 // * Solucion al cors 1
 
-app.use((req, res, next) => {
-      res.setHeader("Access-Control-Allow-Origin", "*");
-      res.setHeader(
-        "Access-Control-Allow-Methods",
-        "OPTIONS, GET, POST, PUT, PATCH, DELETE"
-      );
-      res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-      if (req.method === "OPTIONS") {
-        return res.sendStatus(200);
-      }
-      next();
-    });
+
 
 const whiteList = ['http://localhost:8080', 'https://myapps.com', 'http://127.0.0.1:5500'],
  options = {
